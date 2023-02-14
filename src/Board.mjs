@@ -15,26 +15,26 @@ export class Board {
     );
   }
 
+  replaceSpace (space, symbol) {
+    var subStringA = this.currentBoard.substring(0,space)
+    var subStringB = this.currentBoard.substring(space+1)
+    this.currentBoard = subStringA + symbol + subStringB
+  }
+
   drop () {
     if (this.currentBoard !== `...\n...\n...\n`) {
       throw "already falling"
     }
     this.currentBlock += 4
-    var subStringA = this.currentBoard.substring(0,1)
-    var subStringB = this.currentBoard.substring(2)
-    this.currentBoard = subStringA + 'X' + subStringB
+    this.replaceSpace(1, 'X')
   }
 
   tick () {
     /*empty until current block location*/
-    var subStringA = this.currentBoard.substring(0,this.currentBlock)
-    var subStringB = this.currentBoard.substring(this.currentBlock+1)
-    this.currentBoard = subStringA + '.' + subStringB
+    this.replaceSpace(this.currentBlock, '.')
     /*add new falling block*/
     this.currentBlock += 4
-    var subStringA = this.currentBoard.substring(0,this.currentBlock)
-    var subStringB = this.currentBoard.substring(this.currentBlock+1)
-    this.currentBoard = subStringA + 'X' + subStringB
+    this.replaceSpace(this.currentBlock, 'X')
   }
 
   hasFalling () {
