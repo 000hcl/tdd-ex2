@@ -17,4 +17,8 @@ export class Board {
   drop () {
     this.currentBoard = `.X.\n...\n...\n`
   }
+
+  tick () {
+    this.currentBoard = `...\n.X.\n...\n`
+  }
 }
