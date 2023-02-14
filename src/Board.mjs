@@ -15,6 +15,9 @@ export class Board {
   }
 
   drop () {
+    if (this.currentBoard !== `...\n...\n...\n`) {
+      throw "already falling"
+    }
     var subStringA = this.currentBoard.substring(0,1)
     var subStringB = this.currentBoard.substring(2)
     this.currentBoard = subStringA + 'X' + subStringB
