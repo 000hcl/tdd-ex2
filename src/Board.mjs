@@ -6,8 +6,9 @@ export class Board {
     this.width = width;
     this.height = height;
     this.currentBoard = `...\n...\n...\n`
-    this.currentBlock = -3
-    this.moving = true
+    this.currentLocation = 0
+    this.currentBlock = null
+    this.moving = false
   }
 
   toString() {
@@ -22,19 +23,21 @@ export class Board {
     this.currentBoard = subStringA + symbol + subStringB
   }
 
-  drop () {
-    if (this.currentBoard !== `...\n...\n...\n`) {
+  drop (block) {
+    if (this.moving) {
       throw "already falling"
     }
-    this.currentBlock += 4
-    this.replaceSpace(1, 'X')
+    this.currentBlock = block
+    this.moving = true
+    this.currentLocation = 1
+    this.replaceSpace(1, block.color)
   }
 
   tick () {
-    if (this.currentBlock + 4 <= 11){
-      this.replaceSpace(this.currentBlock, '.')
-      this.currentBlock += 4
-      this.replaceSpace(this.currentBlock, 'X')
+    if (this.currentLocation + 4 <= 11){
+      this.replaceSpace(this.currentLocation, '.')
+      this.currentLocation += 4
+      this.replaceSpace(this.currentLocation, this.currentBlock.color)
     } else {
       this.moving = false
     }
