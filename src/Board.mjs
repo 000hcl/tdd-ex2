@@ -34,7 +34,7 @@ export class Board {
   }
 
   tick () {
-    if (this.currentLocation + 4 <= 11){
+    if (this.currentLocation + 4 <= 11 && this.currentBoard.charAt(this.currentLocation+4) === '.'){
       this.replaceSpace(this.currentLocation, '.')
       this.currentLocation += 4
       this.replaceSpace(this.currentLocation, this.currentBlock.color)
