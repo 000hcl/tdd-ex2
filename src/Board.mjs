@@ -13,4 +13,8 @@ export class Board {
       this.currentBoard
     );
   }
+
+  drop () {
+    this.currentBoard = `.X.\n...\n...\n`
+  }
 }
