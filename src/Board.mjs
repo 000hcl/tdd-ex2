@@ -15,10 +15,14 @@ export class Board {
   }
 
   drop () {
-    this.currentBoard = `.X.\n...\n...\n`
+    var subStringA = this.currentBoard.substring(0,1)
+    var subStringB = this.currentBoard.substring(2)
+    this.currentBoard = subStringA + 'X' + subStringB
   }
 
   tick () {
-    this.currentBoard = `...\n.X.\n...\n`
+    var subStringA = this.currentBoard.substring(3,5)
+    var subStringB = this.currentBoard.substring(6)
+    this.currentBoard = '...' + subStringA + 'X' + subStringB
   }
 }
